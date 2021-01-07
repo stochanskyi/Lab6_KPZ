@@ -1,4 +1,6 @@
-﻿using Lab6.data.repositories.projects.models;
+﻿using Lab6.data.db.projects;
+using Lab6.data.db.projects.models;
+using Lab6.data.repositories.projects.models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,94 +9,59 @@ namespace  Lab6.data.repositories.projects
 {
     public class ProjectsRepository : IProjectsRepository
     {
-
         private static ProjectsRepository instance = null;
 
         public static ProjectsRepository getInstance()
         {
-            return instance ?? (instance = new ProjectsRepository());
+            //TODO REPLACE WITH DEPENDENCY INJECTION
+            return instance ?? (instance = new ProjectsRepository(new ProjectsSourceModel()));
         }
 
-        private ProjectsRepository()
-        {
+        private IProjectsSourceModel sourceModel;
 
+        private ProjectsRepository(IProjectsSourceModel sourceModel)
+        {
+            this.sourceModel = sourceModel;
         }
 
-        private IList<Project> projects = new List<Project>()
-        {
-            new Project(
-                1,
-                "Apolon",
-                "Space shuttle control project",
-                "Mark Turner",
-                3000,
-                Project.ProjectStatus.PENDING
-                ),
-            new Project(
-                2,
-                "Stello",
-                "Music sonunds editor",
-                "Hannah Davidson",
-                40000,
-                Project.ProjectStatus.IN_PROGRESS
-                ),
-            new Project(
-                4,
-                "Setonera",
-                "Mobile video editor",
-                "Ronald Wayne",
-                80000,
-                Project.ProjectStatus.IN_PROGRESS
-                ),
-            new Project(
-                5,
-                "Jenk",
-                "Some description should be here",
-                "Robert Martinez",
-                700000,
-                Project.ProjectStatus.PENDING
-                ),
-            new Project(
-                1,
-                "Danesk",
-                "Some description should be here",
-                "Devid Lineer",
-                1230000,
-                Project.ProjectStatus.PENDING
-                ),
-        };
+        private IList<Project> projects;
 
         public event Action<IList<Project>> ProjectsChangedEvent;
 
         public void DeleteProject(Project project)
         {
+            sourceModel.DeleteProject((int)project.Id);
+
             var index = projects.IndexOfFirst(p => p.Id == project.Id);
             projects.RemoveAt(index);
+
             ProjectsChangedEvent?.Invoke(projects);
         }
-
-        public DetailedProject getProjectDetails(long id)
-        {
-            throw new NotImplementedException();
-        }
-
         public IList<Project> getProjects()
         {
+            projects = sourceModel.GetProjects().Select(dm => parse(dm)).ToList();
+            
             return projects;
         }
 
         public void UpdateProject(Project project)
         {
-            var projectToUpdate = projects.FirstOrDefault(projects => projects.Id == project.Id);
-            if (projectToUpdate == null) return;
-
-            var indexToUpdate = projects.IndexOf(projectToUpdate);
-
-            if (indexToUpdate < 0) return;
-
-            projects[indexToUpdate] = project;
+            sourceModel.UpdateProject(toDataModel(project));
+            
+            var index = projects.IndexOfFirst(p => p.Id == project.Id);
+            projects[index] = project;
 
             ProjectsChangedEvent?.Invoke(projects);
+        }
+
+        private ProjectDataModel toDataModel(Project project)
+        {
+            return new ProjectDataModel((int)project.Id, project.Name, project.Budget, project.Description);
+        }
+
+        private Project parse(ProjectDataModel dataModel)
+        {
+            return new Project(dataModel.Id, dataModel.Name, dataModel.Description, "", dataModel.Budget, Project.ProjectStatus.COMPLETED);
         }
     }
 }

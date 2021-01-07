@@ -10,8 +10,6 @@ namespace Lab6.data.repositories.projects
 
         IList<Project> getProjects();
 
-        DetailedProject getProjectDetails(long id);
-
         void DeleteProject(Project project);
 
         void UpdateProject(Project project);
