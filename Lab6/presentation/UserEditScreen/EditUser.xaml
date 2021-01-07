@@ -1,0 +1,91 @@
+﻿<Window x:Class="Lab5.presentation.UserEditScreen.EditUser"
+        Name="Fucking_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab5.presentation.UserEditScreen"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:my="clr-namespace:Lab5.presentation.common.inputView"
+        xmlns:conv="clr-namespace:Lab5.presentation.UserEditScreen.converters"
+        mc:Ignorable="d"
+        Title="EditUser"
+        Width="400"
+        Height="500">
+
+    <Window.Resources>
+        <conv:StatusConverter x:Key="conv:StatusConverter" ></conv:StatusConverter>
+    </Window.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding OnClosing}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel
+            Grid.Row="0"
+            VerticalAlignment="Center"
+            Orientation="Vertical" 
+            HorizontalAlignment="Center">
+            
+            <my:InputView 
+                InputTitle="Name"  
+                HorizontalAlignment="Center" 
+                DataContext="{ Binding NameModel }"
+                Margin="10"
+                Width="172"/>
+            
+            <my:InputView 
+                InputTitle="Description"  
+                HorizontalAlignment="Center" 
+                DataContext="{ Binding DescriptionModel }"
+                Margin="10"
+                Height="100"
+                Width="211" />
+            
+            <my:InputView 
+                InputTitle="Customer Name" 
+                HorizontalAlignment="Center" 
+                DataContext="{ Binding CustomerNameModel }" 
+                Margin="10"
+                Width="182"/>
+            
+            <my:InputView 
+                InputTitle="Budget" 
+                HorizontalAlignment="Center"
+                DataContext="{ Binding BudgetModel }" 
+                Margin="10"
+                Width="182" />
+            
+            <StackPanel
+                HorizontalAlignment="Center"
+                Margin="10"
+                Orientation="Horizontal">
+                
+                <TextBlock 
+                    Text="Status:" 
+                    Margin="10"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock 
+                    Margin="10"
+                    Text="{ Binding Status, Converter={StaticResource conv:StatusConverter} }" />
+                
+            </StackPanel>
+
+            <Button
+                Content="Confirm" 
+                Command="{ Binding ConfirmCommand }"
+                CommandParameter="{ Binding ElementName=Fucking_Window}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Margin="10"
+                Width="128" />
+        
+        </StackPanel>
+    </Grid>
+</Window>
