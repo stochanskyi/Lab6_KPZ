@@ -1,11 +1,9 @@
-﻿using Lab5.data.projects.models;
+﻿using Lab6.data.repositories.projects.models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Lab5
+namespace Lab6
 {
     static class Utils
     {

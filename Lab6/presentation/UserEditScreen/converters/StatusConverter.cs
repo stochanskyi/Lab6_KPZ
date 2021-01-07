@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
-using static Lab5.data.projects.models.Project;
+using static Lab6.data.repositories.projects.models.Project;
 
 namespace Lab5.presentation.UserEditScreen.converters
 {

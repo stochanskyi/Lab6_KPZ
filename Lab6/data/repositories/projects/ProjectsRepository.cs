@@ -1,11 +1,9 @@
-﻿using Lab5.data.projects.models;
+﻿using Lab6.data.repositories.projects.models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Lab5.data.projects
+namespace  Lab6.data.repositories.projects
 {
     public class ProjectsRepository : IProjectsRepository
     {
@@ -98,6 +96,5 @@ namespace Lab5.data.projects
 
             ProjectsChangedEvent?.Invoke(projects);
         }
-
     }
 }

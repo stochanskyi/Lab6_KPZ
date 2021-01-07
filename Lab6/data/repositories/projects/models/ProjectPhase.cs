@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Lab5.data.projects.models
+namespace Lab6.data.repositories.projects.models
 {
     public class ProjectPhase
     {

@@ -1,8 +1,8 @@
-﻿using Lab5.data.projects.models;
+﻿using Lab6.data.repositories.projects.models;
 using System;
 using System.Collections.Generic;
 
-namespace Lab5.data.projects
+namespace Lab6.data.repositories.projects
 {
     interface IProjectsRepository
     {

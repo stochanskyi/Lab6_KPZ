@@ -1,10 +1,10 @@
-﻿using Lab5.data.projects;
-using Lab5.data.projects.models;
-using Lab5.presentation.common;
+﻿using Lab5.presentation.common;
 using Lab5.presentation.common.inputView;
+using Lab6.data.repositories.projects;
+using Lab6.data.repositories.projects.models;
 using System;
 using System.Windows;
-using static Lab5.data.projects.models.Project;
+using static Lab6.data.repositories.projects.models.Project;
 
 namespace Lab5.presentation.UserEditScreen
 {

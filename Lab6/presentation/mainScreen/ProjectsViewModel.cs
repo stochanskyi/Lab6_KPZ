@@ -1,13 +1,9 @@
-﻿using Lab5.data.projects;
-using Lab5.data.projects.models;
-using Lab5.presentation.common;
+﻿using Lab5.presentation.common;
 using Lab5.presentation.UserEditScreen;
-using System;
+using Lab6.data.repositories.projects;
+using Lab6.data.repositories.projects.models;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab5.presentation.mainScreen
 {

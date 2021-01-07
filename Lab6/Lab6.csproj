@@ -80,11 +80,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="data\projects\IProjectsRepository.cs" />
-    <Compile Include="data\projects\models\DetailedProject.cs" />
-    <Compile Include="data\projects\models\Project.cs" />
-    <Compile Include="data\projects\models\ProjectPhase.cs" />
-    <Compile Include="data\projects\ProjectsRepository.cs" />
+    <Compile Include="data\repositories\projects\IProjectsRepository.cs" />
+    <Compile Include="data\repositories\projects\models\DetailedProject.cs" />
+    <Compile Include="data\repositories\projects\models\Project.cs" />
+    <Compile Include="data\repositories\projects\models\ProjectPhase.cs" />
+    <Compile Include="data\repositories\projects\ProjectsRepository.cs" />
     <Compile Include="presentation\common\BaseViewModel.cs" />
     <Compile Include="presentation\common\ClickCommand.cs" />
     <Compile Include="presentation\mainScreen\ProjectsViewModel.cs" />

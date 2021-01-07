@@ -1,11 +1,5 @@
-﻿using Lab5.data.projects;
-using Lab5.presentation.mainScreen;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Lab5.presentation.mainScreen;
+using Lab6.data.repositories.projects;
 using System.Windows;
 
 namespace Lab5
