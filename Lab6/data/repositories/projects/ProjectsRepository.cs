@@ -1,4 +1,6 @@
-﻿using Lab6.data.db.projects;
+﻿using Lab6.data.db.prejectsEF.CodeFirst;
+using Lab6.data.db.prejectsEF.CodeFirst.models;
+using Lab6.data.db.projects;
 using Lab6.data.db.projects.models;
 using Lab6.data.db.projectsEF;
 using Lab6.data.repositories.projects.models;
@@ -15,7 +17,7 @@ namespace  Lab6.data.repositories.projects
         public static ProjectsRepository getInstance()
         {
             //TODO REPLACE WITH DEPENDENCY INJECTION
-            return instance ?? (instance = new ProjectsRepository(new ProjectsEfSourceModel()));
+            return instance ?? (instance = new ProjectsRepository(new db.prejectsEF.CodeFirst.ProjectsCFSourceModel()));
         }
 
         private IProjectsSourceModel sourceModel;
