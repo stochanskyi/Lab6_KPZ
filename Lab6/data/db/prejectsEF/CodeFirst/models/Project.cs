@@ -15,5 +15,7 @@ namespace Lab6.data.db.prejectsEF.CodeFirst.models
         [Column(TypeName = "NVARCHAR")]
         [StringLength(300)]
         public string Description { get; set; }
+
+        public string customer_name { get; set; }
     }
 }
