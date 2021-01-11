@@ -17,7 +17,7 @@ namespace  Lab6.data.repositories.projects
         public static ProjectsRepository getInstance()
         {
             //TODO REPLACE WITH DEPENDENCY INJECTION
-            return instance ?? (instance = new ProjectsRepository(new db.prejectsEF.CodeFirst.ProjectsCFSourceModel()));
+            return instance ?? (instance = new ProjectsRepository(new ProjectsEfSourceModel()));
         }
 
         private IProjectsSourceModel sourceModel;

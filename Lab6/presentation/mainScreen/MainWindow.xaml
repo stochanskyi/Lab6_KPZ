@@ -13,15 +13,21 @@
             <RowDefinition />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        
+
         <DataGrid 
             Grid.Row="0"
+            AutoGenerateColumns="False"
             HorizontalAlignment="Stretch" 
-            AutoGenerateColumns="True" 
             VerticalAlignment="Stretch"
             IsReadOnly="True"    
             ItemsSource="{Binding Projects}"
-            SelectedItem="{Binding SelectedProject}"/>
+            SelectedItem="{Binding SelectedProject}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name}" />
+                <DataGridTextColumn Binding="{Binding Description}" />
+                <DataGridTextColumn Binding="{Binding Budget}" />
+            </DataGrid.Columns>
+        </DataGrid>
         
         <StackPanel
             Grid.Row="1"
